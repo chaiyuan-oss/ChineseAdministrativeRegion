@@ -56,7 +56,7 @@ class gaode
         file_put_contents($path . 'province.json', json_encode($this->province_arr, 320));
         file_put_contents($path . 'city.json', json_encode($this->city_arr, 320));
         file_put_contents($path . 'area.json', json_encode($this->area_arr, 320));
-        file_put_contents($path . 'street.json', json_encode($this->street_arr, 320));
+        //file_put_contents($path . 'street.json', json_encode($this->street_arr, 320));
 
         $this->_debug("json文件已写入到" . realpath($path) . "目录下");
     }
@@ -160,12 +160,13 @@ SQL;
             foreach ($this->city_arr as $v) {
                 $sql .= "\n({$v['id']}, '{$v['adcode']}', '{$v['name']}' ,'{$v['center']}' , '{$v['pid']}'),";
             }
-        } else {
+        } else if($type == 'area') {
             $sql = 'INSERT INTO `region` (`id`,`region_id`, `region`,`center`, `father_id`) VALUES ';
             foreach ($this->area_arr as $v) {
                 $sql .= "\n({$v['id']}, '{$v['adcode']}', '{$v['name']}' ,'{$v['center']}' , '{$v['pid']}'),";
             }
         }
+        //如需要街道sql 请自行添加else代码
 
 
         $sql = rtrim($sql, ',') . ";";

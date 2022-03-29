@@ -9,7 +9,29 @@ https://github.com/gaohuazi/china_regions
 https://lbs.amap.com/api/webservice/guide/api/district/#limit 高德文档地址
 
 高德key地址
-gaode.class.php line 13
+`gaode.class.php line 13`
+
+### 其他说明
+省份信息不包含港澳台如需要请在`gaode.class.php` `line 187` 自行添加
+省市区县 不含街道 如需街道请在对应位置自行添加或解开注释
+
+街道(乡镇)没有独有的行政区划编码，均继承父类（区县）的
+
+高德数据获取需要输入标准名称 如河北省 输入河北有记录返回河北区 不是标准名称的要注意级别是否为需要的级别
+级别
+ - country:国家
+
+ - province:省份（直辖市会在province和city显示）
+
+ - city:市（直辖市会在province和city显示）
+
+ - district:区县
+
+ - street:街道
+
+sql 文件需要自行更改为适合自己的
+
+需要go版本请自行到原作者处获取代码
 
 ### 目录结构描述
 <pre>
